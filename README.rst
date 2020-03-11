@@ -1,3 +1,7 @@
+Readme blah blah blah
+bekijk gwn analyse.py, rest is onbelangrijk
+
+
 *** ReadMe for ColorPy 0.1.0. ***
 
 ColorPy is a Python package that can convert physical descriptions of light -
