@@ -126,8 +126,8 @@ import random
 import numpy
 import pylab
 
-import colormodels
-import ciexyz
+from colorpy import colormodels
+from colorpy import ciexyz
 
 # Miscellaneous utilities for plots
 

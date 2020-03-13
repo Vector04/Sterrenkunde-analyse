@@ -72,9 +72,9 @@ import math
 import numpy
 # import pylab
 
-import colormodels
-import ciexyz
-import plots
+from colorpy import colormodels
+from colorpy import ciexyz
+from colorpy import plots
 
 # Physical constants in mks units
 PLANCK_CONSTANT = 6.6237e-34      # J-sec
@@ -120,7 +120,6 @@ def blackbody_color(T_K):
     '''Given a temperature (K), return the xyz color of a thermal blackbody.'''
     spectrum = blackbody_spectrum(T_K)
     xyz = ciexyz.xyz_from_spectrum(spectrum)
-    print("helloooo")
     return colormodels.irgb_from_xyz(xyz)
 
 #

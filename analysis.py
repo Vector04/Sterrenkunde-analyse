@@ -1,6 +1,5 @@
 import sys
 import random
-import time
 
 from matplotlib import pyplot as plt
 from matplotlib import ticker
@@ -43,6 +42,7 @@ im = im[13:, :]
 
 shape = im.shape
 print(f"Image dimensions: {im.shape}.")
+print(f"fov: {0.559 * np.array(shape)} as")
 
 fig1, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2)
 fig2, ax5 = plt.subplots()
@@ -56,10 +56,6 @@ img_cropped[1800:3300, 1800:3087] = im[1800:3300, 1800:3087]
 ax2.imshow(img_cropped, cmap='bone')
 ax2.set_ylim((3300, 1800))
 ax2.set_xlim((1800, 3087))
-
-# plt.imsave(r'pictures\Total_photo.png', im, cmap='cubehelix')
-# plt.imsave(r'pictures\M81.png', im[1800:3300, 1800:3087], cmap='cubehelix')
-
 
 # Calibration measurements (some done with ds9) star: GSC 04383-00613
 __pixel_delta_cal = 1.21767568e+12  # from ds9
@@ -219,8 +215,7 @@ for i in range(int(n - dn)):
     ax4.scatter(x, y, s=f_ * 7e7, c=[color])
     ax5.scatter(x, y, s=f_ * 7e7, c=[color])
     dis = f"{(r / 3.08567758e16):.3g}"
-    print(
-        f"{''.join([' ' for _ in range(13 - len(dis))])}{(r / 3.08567758e16):.3g},    {f_:.2e},    {T:.0f},    {mass:.2f}.")
+    print(f"{''.join([' ' for _ in range(13 - len(dis))])}{(r / 3.08567758e16):.3g},    {f_:.2e},    {T:.0f},    {mass:.2f}.")
 
 
 print()
@@ -235,14 +230,13 @@ ax5.xaxis.set_major_locator(ticker.NullLocator())
 ax5.xaxis.set_minor_locator(ticker.NullLocator())
 ax5.yaxis.set_major_locator(ticker.NullLocator())
 ax5.yaxis.set_minor_locator(ticker.NullLocator())
-fig2.savefig(r'pictures\Simulated_sky.png')
+fig2.savefig(r'pictures/Simulated_sky.png')
 
 
 print("Simulated m81-earth.")
 print(f"Total magnitude: {m(f_m81)}")
 print(f"Total mass/pc^3: {M_region / V_tot} M0/pc^3")
 
-print(f"fov: {0.559*np.array(shape)}")
 
 if logging:
     sys.stdout = old_stdout
